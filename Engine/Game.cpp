@@ -20,6 +20,7 @@
  ******************************************************************************************/
 #include "MainWindow.h"
 #include "Game.h"
+#include "SpriteCodex.h"
 
 Game::Game( MainWindow& wnd )
 	:
@@ -63,5 +64,9 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
-	field.Draw( gfx );
+	field.Draw(gfx);
+	if (field.GetState() == MemeField::State::Winrar)
+	{
+		SpriteCodex::DrawWin(gfx.GetRect().GetCenter(), gfx);
+	}
 }
